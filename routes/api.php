@@ -13,6 +13,10 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::get('login', 'Youtube@viewLogin');
+Route::post('login', 'Youtube@login');
+Route::post('register', 'Youtube@register');
+Route::group(['middleware' => 'auth:api'], function(){
+Route::post('details', 'Youtuber@details');
 });
